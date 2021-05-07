@@ -148,7 +148,7 @@ G2fco2f(ind)=9;
 clear cruise i station bottle cast 
 
 
-% Temperature
+% Temperature: Set all measured values to NaN and 1st QC flags to 9
 cruise=[268];
 station=[226];
 bottle=[94];
@@ -277,7 +277,7 @@ end
 clear bflag holder i T
 
     
-%% Assign 20°C temperature to calculated fco2 data (where missing)
+%% Assign 20Â°C temperature to calculated fco2 data (where missing)
 ind=find(~isnan(G2fco2) & isnan(G2fco2temp)); % When checked, all these values have a flag=0
 G2fco2temp(ind)=20;
 clear ind
@@ -361,7 +361,7 @@ A=sortrows(A, [68 16]);
 A.TDN(A.TDN_FLAG_W~=2 & A.TDN_FLAG_W~=6)=NaN;
 A.TDN_FLAG_W(A.TDN_FLAG_W~=2 & A.TDN_FLAG_W~=6)=9;
 
-% Convert pH for stations 25 and 26 from 9°C to 25°C
+% Convert pH for stations 25 and 26 from 9Â°C to 25Â°C
 indph=find(A.STNNBR==25 | A.STNNBR==26);
 
 % Calculate missing PO4 and SIOH4 values
